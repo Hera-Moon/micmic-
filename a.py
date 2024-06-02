@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 from flask_restx import Api, Resource
 
 app = Flask(__name__)
@@ -13,27 +13,27 @@ class HelloController(Resource):
             returns a list of conferences
         """
 
-        return jsonify({"status": "ok", "data": None}), 200
+        return make_response(jsonify({"status": "ok", "data": None}, 200))
 
     def post(self):
         """
             Adds a new conference to the list
         """
         body = request.get_json(force=True, silent=True)
-        return jsonify({"status": "ok", "data": body}), 201
+        return make_response(jsonify({"status": "ok", "data": body}, 201))
 
     def put(self):
         """
             Displays a conference's details
         """
-        return jsonify({"status": "ok", "data": None}), 200
+        return make_response(jsonify({"status": "ok", "data": None}), 200)
 
     def patch(self):
         """
             Edits a selected conference
         """
-        return jsonify({"status": "ok", "data": None}), 200
+        return make_response(jsonify({"status": "ok", "data": None}), 200)
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=7890)
+    app.run(debug=True, port=7890)
