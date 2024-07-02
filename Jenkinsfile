@@ -1,6 +1,6 @@
 node{
     stage('Clone repository'){
-        git credentialsId: "github_access_token", url: "https://github.com/Hera-Moon/micmic-.git"
+        git credentialsId: "github_access_token", url: "https://github.com/Hera-Moon/micmic-.git",branch: "main"
     }
 
     stage('Build image'){
